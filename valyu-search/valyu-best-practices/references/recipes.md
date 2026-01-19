@@ -41,7 +41,6 @@ Practical patterns for common tasks from Valyu
 | Recipe | Description |
 |--------|-------------|
 | [basic-answer.md](answer-recipes/basic-answer.md) | AI-synthesized answers from search |
-| [answer-with-fast-mode.md](answer-recipes/answer-with-fast-mode.md) | Lower latency responses |
 | [answer-with-streaming.md](answer-recipes/answer-with-streaming.md) | Progressive real-time feedback |
 | [answer-with-custom-instructions.md](answer-recipes/answer-with-custom-instructions.md) | Guide AI response formatting |
 
@@ -50,7 +49,7 @@ Practical patterns for common tasks from Valyu
 | Recipe | Description |
 |--------|-------------|
 | [create-a-fast-research-task-and-await-completion.md](deepresearch-recipes/create-a-fast-research-task-and-await-completion.md) | Quick research (~5 min) |
-| [create-a-lite-research-task-and-await-completion.md](deepresearch-recipes/create-a-lite-research-task-and-await-completion.md) | Balanced research (~10-20 min) |
+| [create-a-standard-research-task-and-await-completion.md](deepresearch-recipes/create-a-standard-research-task-and-await-completion.md) | Balanced research (~10-20 min) |
 | [create-a-heavy-research-task-and-await-completion.md](deepresearch-recipes/create-a-heavy-research-task-and-await-completion.md) | Comprehensive analysis (~90 min) |
 
 ---
@@ -87,7 +86,7 @@ scripts/valyu contents <url> [--summary [instructions]] [--structured <schema>]
 scripts/valyu answer <query> [--fast] [--structured <schema>]
 
 # Deep research
-scripts/valyu deepresearch create <query> [--model fast|lite|heavy] [--pdf]
+scripts/valyu deepresearch create <query> [--model fast|standard|heavy] [--pdf]
 scripts/valyu deepresearch status <task-id>
 ```
 

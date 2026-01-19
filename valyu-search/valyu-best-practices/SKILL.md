@@ -335,7 +335,7 @@ if (status.status === "completed") {
 
 For detailed patterns, see:
 - [Fast Research](references/deepresearch-recipes/create-a-fast-research-task-and-await-completion.md)
-- [Lite Research](references/deepresearch-recipes/create-a-lite-research-task-and-await-completion.md)
+- [Standard Research](references/deepresearch-recipes/create-a-standard-research-task-and-await-completion.md)
 - [Heavy Research](references/deepresearch-recipes/create-a-heavy-research-task-and-await-completion.md)
 
 ---

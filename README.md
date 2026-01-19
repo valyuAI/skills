@@ -156,7 +156,7 @@ What do you need?
 | Recipe | Duration | Use Case |
 |--------|----------|----------|
 | [fast-research](valyu-search/best-practices/references/deepresearch-recipes/create-a-fast-research-task-and-await-completion.md) | ~5 min | Quick lookups |
-| [lite-research](valyu-search/best-practices/references/deepresearch-recipes/create-a-lite-research-task-and-await-completion.md) | ~15 min | Standard research |
+| [standard-research](valyu-search/best-practices/references/deepresearch-recipes/create-a-standard-research-task-and-await-completion.md) | ~15 min | Standard research |
 | [heavy-research](valyu-search/best-practices/references/deepresearch-recipes/create-a-heavy-research-task-and-await-completion.md) | ~90 min | Comprehensive analysis |
 
 ## Integration Guides

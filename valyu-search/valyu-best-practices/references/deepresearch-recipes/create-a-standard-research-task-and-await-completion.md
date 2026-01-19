@@ -1,6 +1,6 @@
-# Lite Research Task
+# Standard Research Task
 
-Use `lite` mode for balanced research (~10-20 minutes). Good for most use cases.
+Use `standard` mode for balanced research (~10-20 minutes). Good for most use cases.
 
 ## Step 1: Create Task
 
@@ -11,7 +11,7 @@ const valyu = new Valyu(YOUR_VALYU_API_KEY_HERE);
 
 const task = await valyu.deepresearch.create({
   input: "Comprehensive analysis of electric vehicle battery technology trends 2024",
-  model: "lite"
+  model: "standard"
 });
 
 console.log(`Task created: ${task.deepresearch_id}`);
@@ -46,7 +46,7 @@ valyu = Valyu()
 # Create task
 task = valyu.deepresearch.create(
     input="Comprehensive analysis of electric vehicle battery technology trends 2024",
-    model="lite"
+    model="standard"
 )
 
 # Wait for completion
@@ -66,6 +66,6 @@ if result.status == "completed":
 
 ## CLI
 ```bash
-scripts/valyu deepresearch create "EV battery technology trends 2024" --model lite
+scripts/valyu deepresearch create "EV battery technology trends 2024" --model standard
 scripts/valyu deepresearch status <task-id>
 ```

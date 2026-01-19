@@ -228,7 +228,7 @@ Async comprehensive research with detailed reports and citations.
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `query` | string | **required** | Research question |
-| `model` | enum | `"lite"` | `"fast"` (~5 min), `"lite"` (~10-20 min), `"heavy"` (~90 min) |
+| `model` | enum | `"standard"` | `"fast"` (~5 min), `"standard"` (~10-20 min), `"heavy"` (~90 min) |
 | `output_format` | enum | `"markdown"` | `"markdown"`, `"pdf"`, or JSON schema |
 | `included_sources` | array | [] | Sources to prioritize |
 | `excluded_sources` | array | [] | Sources to exclude |
@@ -240,7 +240,7 @@ Async comprehensive research with detailed reports and citations.
 | Mode | Duration | Best For |
 |------|----------|----------|
 | `fast` | ~5 minutes | Quick lookups, simple questions |
-| `lite` | ~10-20 minutes | Balanced research, most use cases |
+| `standard` | ~10-20 minutes | Balanced research, most use cases |
 | `heavy` | ~90 minutes | Comprehensive analysis, complex topics |
 
 ### Check Status (`GET /v1/deepresearch/tasks/{id}/status`)
@@ -260,7 +260,7 @@ queued → running → completed/failed/cancelled
   "deepresearch_id": "f992a8ab-4c91-4322-905f-190107bd5a5b",
   "status": "queued",
   "query": "AI market trends 2024",
-  "model": "lite"
+  "model": "standard"
 }
 ```
 
