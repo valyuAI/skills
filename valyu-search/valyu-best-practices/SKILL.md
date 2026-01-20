@@ -37,6 +37,78 @@ What do you need?
 
 ---
 
+## ⚠️ MANDATORY: Use Official Valyu SDK Libraries
+
+**CRITICAL: When writing code that uses the Valyu API, you MUST use the official SDK libraries. NEVER make raw HTTP/fetch calls to the Valyu API endpoints.**
+
+### JavaScript/TypeScript: `valyu-js`
+
+```bash
+npm install valyu-js
+# or
+pnpm add valyu-js
+```
+
+```typescript
+import { Valyu } from 'valyu-js';
+
+const valyu = new Valyu({
+  apiKey: process.env.VALYU_API_KEY
+});
+
+// Now use valyu.search(), valyu.contents(), valyu.answer(), valyu.deepResearch
+```
+
+### Python: `valyu`
+
+```bash
+pip install valyu
+# or
+uv add valyu
+```
+
+```python
+from valyu import Valyu
+
+valyu = Valyu(api_key=os.environ.get("VALYU_API_KEY"))
+
+# Now use valyu.search(), valyu.contents(), valyu.answer(), valyu.deep_research
+```
+
+### Why SDK Over Raw API Calls?
+
+1. **Type safety** - Full TypeScript/Python type hints for all parameters and responses
+2. **Automatic retries** - Built-in retry logic for transient failures
+3. **Streaming support** - Proper async iterator support for streaming responses
+4. **Error handling** - Structured error types with helpful messages
+5. **Future compatibility** - SDK updates handle API changes automatically
+
+### ❌ NEVER Do This
+
+```typescript
+// DON'T make raw fetch calls
+const response = await fetch('https://api.valyu.ai/v1/search', {
+  method: 'POST',
+  headers: {
+    'x-api-key': apiKey,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ query: '...' })
+});
+```
+
+### ✅ Always Do This
+
+```typescript
+// DO use the SDK
+import { Valyu } from 'valyu-js';
+
+const valyu = new Valyu(process.env.VALYU_API_KEY);
+const response = await valyu.search({ query: '...' });
+```
+
+---
+
 ## 1. Search API
 
 **Purpose:** Find information across web, academic, medical, transportation, financial, news, and proprietary sources.
@@ -56,8 +128,8 @@ What do you need?
 ```typescript
 const response = await valyu.search({
   query: "transformer architecture attention mechanism 2024",
-  search_type: "all",
-  max_num_results: 10
+  searchType: "all",
+  maxNumResults: 10
 });
 ```
 
@@ -87,9 +159,9 @@ const response = await valyu.search({
 ```typescript
 await valyu.search({
   query: "CRISPR therapeutic applications clinical trials",
-  search_type: "proprietary",
-  included_sources: ["valyu/valyu-arxiv", "valyu/valyu-pubmed", "valyu/valyu-biorxiv"],
-  start_date: "2024-01-01"
+  searchType: "proprietary",
+  includedSources: ["valyu/valyu-arxiv", "valyu/valyu-pubmed", "valyu/valyu-biorxiv"],
+  startDate: "2024-01-01"
 });
 ```
 
@@ -97,8 +169,8 @@ await valyu.search({
 ```typescript
 await valyu.search({
   query: "Apple revenue Q4 2024 earnings",
-  search_type: "all",
-  included_sources: ["valyu/valyu-sec-filings", "valyu/valyu-earnings-US"]
+  searchType: "all",
+  includedSources: ["valyu/valyu-sec-filings", "valyu/valyu-earnings-US"]
 });
 ```
 
@@ -106,9 +178,9 @@ await valyu.search({
 ```typescript
 await valyu.search({
   query: "AI regulation EU",
-  search_type: "news",
-  start_date: "2024-06-01",
-  country_code: "EU"
+  searchType: "news",
+  startDate: "2024-06-01",
+  countryCode: "EU"
 });
 ```
 
@@ -385,7 +457,7 @@ Query 3: "Tesla FSD autonomous driving progress"
 
 ### Source Filtering
 
-Use `included_sources` for domain authority:
+Use `includedSources` for domain authority:
 ​
 Financial Research Collection. Some sources to include:
 - `valyu/valyu-sec-filings` - SEC regulatory filings
@@ -410,13 +482,13 @@ Tech Documentation Collection. Some sources to include:
 
 ```javascript
 // Academic
-included_sources: ["valyu/valyu-arxiv", "valyu/valyu-pubmed", "nature"]
+includedSources: ["valyu/valyu-arxiv", "valyu/valyu-pubmed", "nature"]
 
 // Financial
-included_sources: ["valyu/valyu-sec-filings", "bloomberg.com", "reuters.com"]
+includedSources: ["valyu/valyu-sec-filings", "bloomberg.com", "reuters.com"]
 
 // Tech news
-included_sources: ["techcrunch.com", "theverge.com", "arstechnica.com"]
+includedSources: ["techcrunch.com", "theverge.com", "arstechnica.com"]
 ```
 
 For complete prompting guide, see [references/prompting.md](references/prompting.md).
@@ -431,8 +503,8 @@ For complete prompting guide, see [references/prompting.md](references/prompting
 // 1. Quick search to find sources
 const searchResults = await valyu.search({
   query: "CRISPR therapeutic applications",
-  search_type: "proprietary",
-  max_num_results: 20
+  searchType: "proprietary",
+  maxNumResults: 20
 });
 
 // 2. Extract key content from top results
@@ -454,13 +526,13 @@ const research = await valyu.deepResearch.create({
 // 1. Get SEC filings
 const filings = await valyu.search({
   query: "Apple 10-K 2024",
-  included_sources: ["sec-filings"]
+  includedSources: ["sec-filings"]
 });
 
 // 2. Quick synthesis
 const summary = await valyu.answer({
   query: "Apple Q4 2024 financial highlights",
-  fast_mode: true
+  fastMode: true
 });
 
 // 3. Structured extraction
