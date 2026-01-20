@@ -144,14 +144,14 @@ const response = await valyu.search({
 
 ### Key Parameters
 
-| Parameter | Purpose | Example |
-|-----------|---------|---------|
-| `query` | Search query (under 400 chars) | `"CRISPR gene editing 2024"` |
-| `search_type` | Source scope | `"all"`, `"web"`, `"proprietary"`, `"news"` |
-| `max_num_results` | Number of results (1-20) | `10` |
-| `included_sources` | Limit to specific sources | `["valyu/valyu-arxiv", "valyu/valyu-pubmed", "valyu/valyu-medrxiv", "valyu/valyu-biorxiv"]` |
-| `start_date` / `end_date` | Date filtering | `"2024-01-01"` |
-| `relevance_threshold` | Minimum relevance (0-1) | `0.7` |
+| Parameter (TS/JS) | Parameter (Python) | Purpose | Example |
+|-------------------|-------------------|---------|---------|
+| `query` | `query` | Search query (under 400 chars) | `"CRISPR gene editing 2024"` |
+| `searchType` | `search_type` | Source scope | `"all"`, `"web"`, `"proprietary"`, `"news"` |
+| `maxNumResults` | `max_num_results` | Number of results (1-20) | `10` |
+| `includedSources` | `included_sources` | Limit to specific sources | `["valyu/valyu-arxiv", "valyu/valyu-pubmed"]` |
+| `startDate` / `endDate` | `start_date` / `end_date` | Date filtering | `"2024-01-01"` |
+| `relevanceThreshold` | `relevance_threshold` | Minimum relevance (0-1) | `0.7` |
 
 ### Domain-Specific Search Patterns
 
@@ -243,13 +243,13 @@ const response = await valyu.contents({
 
 ### Key Parameters
 
-| Parameter | Purpose | Example |
-|-----------|---------|---------|
-| `urls` | URLs to process (1-10) | `["https://example.com"]` |
-| `response_length` | Content length | `"short"`, `"medium"`, `"large"`, `"max"` |
-| `extract_effort` | Extraction quality | `"normal"`, `"high"`, `"auto"` |
-| `summary` | AI summarization | `true`, `"instructions"`, or JSON schema |
-| `screenshot` | Capture screenshots | `true` |
+| Parameter (TS/JS) | Parameter (Python) | Purpose | Example |
+|-------------------|-------------------|---------|---------|
+| `urls` | `urls` | URLs to process (1-10) | `["https://example.com"]` |
+| `responseLength` | `response_length` | Content length | `"short"`, `"medium"`, `"large"`, `"max"` |
+| `extractEffort` | `extract_effort` | Extraction quality | `"normal"`, `"high"`, `"auto"` |
+| `summary` | `summary` | AI summarization | `true`, `"instructions"`, or JSON schema |
+| `screenshot` | `screenshot` | Capture screenshots | `true` |
 
 ### Content Recipes
 
@@ -318,12 +318,12 @@ for await (const chunk of stream) {
 ```typescript
 const response = await valyu.answer({
   query: "Apple Q4 2024 financial highlights",
-  structured_output: {
+  structuredOutput: {
     type: "object",
     properties: {
       revenue: { type: "string" },
-      growth_rate: { type: "string" },
-      key_highlights: { type: "array", items: { type: "string" } }
+      growthRate: { type: "string" },
+      keyHighlights: { type: "array", items: { type: "string" } }
     }
   }
 });
@@ -331,14 +331,14 @@ const response = await valyu.answer({
 
 ### Key Parameters
 
-| Parameter | Purpose | Example |
-|-----------|---------|---------|
-| `query` | Question to answer | `"What is quantum computing?"` |
-| `fast_mode` | Lower latency | `true` |
-| `system_instructions` | AI directives | `"Be concise"` |
-| `structured_output` | JSON schema | `{type: "object", ...}` |
-| `streaming` | Enable SSE streaming | `true` |
-| `data_max_price` | Dollar limit | `1.0` |
+| Parameter (TS/JS) | Parameter (Python) | Purpose | Example |
+|-------------------|-------------------|---------|---------|
+| `query` | `query` | Question to answer | `"What is quantum computing?"` |
+| `fastMode` | `fast_mode` | Lower latency | `true` |
+| `systemInstructions` | `system_instructions` | AI directives | `"Be concise"` |
+| `structuredOutput` | `structured_output` | JSON schema | `{type: "object", ...}` |
+| `streaming` | `streaming` | Enable SSE streaming | `true` |
+| `dataMaxPrice` | `data_max_price` | Dollar limit | `1.0` |
 
 ### Answer Recipes
 
@@ -395,13 +395,13 @@ if (status.status === "completed") {
 
 ### Key Parameters
 
-| Parameter | Purpose | Example |
-|-----------|---------|---------|
-| `query` | Research question | `"AI market trends 2024"` |
-| `model` | Research depth | `"fast"`, `"standard"`, `"heavy"` |
-| `output_format` | Report format | `"markdown"`, `"pdf"` |
-| `included_sources` | Source filtering | `["valyu/valyu-arxiv", "techcrunch.com"]` |
-| `start_date` / `end_date` | Date range | `"2024-01-01"` |
+| Parameter (TS/JS) | Parameter (Python) | Purpose | Example |
+|-------------------|-------------------|---------|---------|
+| `query` | `query` | Research question | `"AI market trends 2024"` |
+| `model` | `model` | Research depth | `"fast"`, `"standard"`, `"heavy"` |
+| `outputFormat` | `output_format` | Report format | `"markdown"`, `"pdf"` |
+| `includedSources` | `included_sources` | Source filtering | `["valyu/valyu-arxiv", "techcrunch.com"]` |
+| `startDate` / `endDate` | `start_date` / `end_date` | Date range | `"2024-01-01"` |
 
 ### DeepResearch Recipes
 
@@ -526,7 +526,7 @@ const research = await valyu.deepResearch.create({
 // 1. Get SEC filings
 const filings = await valyu.search({
   query: "Apple 10-K 2024",
-  includedSources: ["sec-filings"]
+  includedSources: ["valyu/valyu-sec-filings"]
 });
 
 // 2. Quick synthesis
@@ -538,12 +538,12 @@ const summary = await valyu.answer({
 // 3. Structured extraction
 const metrics = await valyu.answer({
   query: "Apple financial metrics 2024",
-  structured_output: {
+  structuredOutput: {
     type: "object",
     properties: {
       revenue: { type: "string" },
-      net_income: { type: "string" },
-      growth_rate: { type: "string" }
+      netIncome: { type: "string" },
+      growthRate: { type: "string" }
     }
   }
 });
