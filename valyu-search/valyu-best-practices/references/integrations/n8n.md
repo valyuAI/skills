@@ -54,5 +54,5 @@ The Valyu node provides four main operations:
 ## Resources
 
 - npm package: n8n-nodes-valyu
-- GitHub: github.com/valyu-network/n8n-nodes-valyu
+- GitHub: github.com/valyuAI/n8n-nodes-valyu
 - Community support: discord.gg/umtmSsppRY

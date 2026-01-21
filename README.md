@@ -31,7 +31,7 @@ Valyu provides a unified API for AI agents to access real-time information acros
 ## Installation
 
 ```bash
-npx add-skill valyu-network/skills
+npx skills add valyuAI/skills
 ```
 
 The skill provides instructions for:
@@ -60,8 +60,8 @@ The skill provides instructions for:
    // Search across all sources
    const results = await valyu.search({
      query: "transformer architecture attention mechanism 2024",
-     search_type: "all",
-     max_num_results: 10
+     searchType: "all",
+     maxNumResults: 10
    });
 
    // Get AI-powered answer

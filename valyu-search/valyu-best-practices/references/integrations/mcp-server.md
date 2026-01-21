@@ -116,4 +116,4 @@ Recommended range: 30-100 CPM ($0.03-$0.10) for most use cases.
 
 - **Platform**: [platform.valyu.ai](https://platform.valyu.ai)
 - **Docs**: [docs.valyu.ai](https://docs.valyu.ai)
-- **GitHub**: [github.com/valyu-network](https://github.com/valyu-network)
+- **GitHub**: [github.com/valyuAI](https://github.com/valyuAI)

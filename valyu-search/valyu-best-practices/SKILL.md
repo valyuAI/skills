@@ -52,9 +52,7 @@ pnpm add valyu-js
 ```typescript
 import { Valyu } from 'valyu-js';
 
-const valyu = new Valyu({
-  apiKey: process.env.VALYU_API_KEY
-});
+const valyu = new Valyu(process.env.VALYU_API_KEY);
 
 // Now use valyu.search(), valyu.contents(), valyu.answer(), valyu.deepResearch
 ```

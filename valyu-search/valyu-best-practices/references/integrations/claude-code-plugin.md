@@ -13,7 +13,7 @@ The Valyu Search Plugin for Claude Code provides direct access to Valyu's search
 ## Installation
 
 ```bash
-/plugin marketplace add valyu-network/valyu-search-plugin
+/plugin marketplace add valyuAI/valyu-search-plugin
 /plugin install valyu-search-plugin@valyu-marketplace
 ```
 
@@ -95,6 +95,6 @@ Results return as structured JSON with `success`, `type`, `searchType`, `query`,
 
 ## Support Resources
 
-- **GitHub**: github.com/valyu-network/claude-search-plugin
+- **GitHub**: github.com/valyuAI/claude-search-plugin
 - **Discord**: discord.gg/umtmSsppRY
 - **API Documentation**: docs.valyu.ai

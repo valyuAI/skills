@@ -15,7 +15,7 @@ Verify Python installation: `python --version`
 ### 1. Clone and Configure Environment
 
 ```bash
-git clone https://github.com/valyu-network/valyu-mcp.git
+git clone https://github.com/valyuAI/valyu-mcp.git
 cd valyu-mcp
 ```
 
@@ -109,4 +109,4 @@ Access logs through Claude Desktop: Settings > Developer > Open Logs Folder.
 
 - **Platform:** https://platform.valyu.ai (Get API key and free credits)
 - **Documentation:** https://docs.valyu.ai
-- **GitHub:** https://github.com/valyu-network/valyu-mcp
+- **GitHub:** https://github.com/valyuAI/valyu-mcp
